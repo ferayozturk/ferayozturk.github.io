@@ -1,11 +1,6 @@
 name: Feray Öztürk
-<<<<<<< HEAD
-description:
-meta_description: ""
-=======
 description: Blogging about stuffs
 meta_description: "Your New Jekyll Site, Blogging about stuffs"
->>>>>>> f117b9f912c8c69fe4fdea58485cfedbe65fb0e2
 
 aboutPage: true
 
