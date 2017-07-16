@@ -1,7 +1,9 @@
 
 ---
+
 title:  "Arduinoların Bluetooth Modülü ile Haberleşmesi"
-date:   2017-07-16 13:55:00
+date:    2013-11-10 14:50:00
+
 ---
 
 # Arduinoların Bluetooth Modülü ile Haberleşmesi
