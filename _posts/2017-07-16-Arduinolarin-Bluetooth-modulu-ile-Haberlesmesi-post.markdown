@@ -1,13 +1,34 @@
 
 ---
 title:  "Arduinoların Bluetooth Modülü ile Haberleşmesi"
-date:   2017-07-15 10:12:15
+date:   2017-07-15 10:13:40
 ---
 
 # Arduinoların Bluetooth Modülü ile Haberleşmesi
 
 Öncelikle kullanacağımız HC-05 bluetooth modülünün nasıl çalıştığına bakalım. Bluetooth modülü başka bir bluetooth cihazla eşleşerek iletişim sağlar. Bu eşleşme master ve slave cihazlar arasında gerçekleşir. Master haberleşme isteği yollar ve 10m alan içerisindeki slave cihazlar cevap verir. HC-05 modülü hem master hemde slave olarak çalışabilir. Fakat hangi durumda çalışacağı AT COMMANDS isimli komutlarla ayarlanır.
-**AT COMMANS** listesine [buradan](https://www.itead.cc/wiki/Serial_Port_Bluetooth_Module_(Master/Slave) ulaşabilirsiniz.
+
+## AT COMMANS
+
+|  command  |  Respend  |  Parameter  |  Description  |
+|:---------:|:---------:|:-----------:|--------------|
+|AT         |OK         |   -         |Cihazınızın bağlantıya hazır olup olmadığını kontrol eder|
+|AT+RESET   |OK         |   -          |Ayarları resetler ve AT moddan çıkar|
+|AT+VERSION?|	+VERSION:<Param> OK|Param : firmware version|Versiyonu Gösterir|
+|AT+ORGL	|OK|-|Fabrika ayarlarına geri döner|
+|AT+NAME?	|+NAME:<Param> OK (/FAIL)	|Param: Bluetooth module name (Default :HC-05)|Default ismi gösterir|
+|AT+NAME=<Param>	|OK|Param: Bluetooth module name (Default :HC-05)|Modülün adını değiştirir|
+|AT+ADDR?	|+ADDR:<Param> OK	|Param: address of Bluetooth module|Default adresi gösterir|
+|AT+ ROLE?|AT+ROLE=<Param>OLE:<Param> OK|Param: 0- Slave 1-Master 2-Slave-Loop|Master ya da slave olma durumunu gösterir|
+|AT+ROLE=<Param>	|OK|Param: 0- Slave 1-Master 2-Slave-LooP|Master-Slave olma durumunu değiştirir|
+|AT+ PSWD?|+ PSWD ：<Param> OK	|Param: PIN code (Default 1234)|Default parolayı gösterir|
+|AT+PSWD=<Param>|OK|Param: PIN code (Default 1234)|Default parolayı değiştirir|
+|AT+UART?|	+UART=<Param>,<Param2>, <Param3> OK|Param1: Baud Param2: Stop bit Param3: Parity|Ayarlanmış olan Baud Rate’ yi gösterir|
+|AT+UART=<Param>,<Param2>,<Param3>	|OK|Param1: Baud Param2: Stop bit Param3: Parity|Baud Rate ayarlarını değiştirir|
+|AT+ CMODE?|+ CMODE:<Param> OK	|Param: 0 - connect fixed address 1 - connect any address 2 - slave-Loop|Eşleşme modunu gösterir|
+
+
+
 AT komutlarını kullanabilmek için gerekli yazılım aşağıdaki gibidir.
 
 ```javascript
